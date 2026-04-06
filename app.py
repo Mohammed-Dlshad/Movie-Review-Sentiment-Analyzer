@@ -1,3 +1,14 @@
+import sys
+import os
+import subprocess
+from streamlit.runtime.scriptrunner import get_script_run_ctx
+
+# 🛡️ Auto-launch Streamlit if the user runs this file directly with Python!
+if not get_script_run_ctx():
+    print("🚀 Automatically starting Streamlit server...")
+    subprocess.run([sys.executable, "-m", "streamlit", "run", os.path.abspath(__file__)])
+    sys.exit()
+
 import streamlit as st
 import pickle
 import os
